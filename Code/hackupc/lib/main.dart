@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'problem1.dart';
 
 void main()=>runApp(MyApp());
 
@@ -16,7 +17,9 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.white,
-            title: MyAppBar(goBack: false,),
+            title: MyAppBar(
+              goBack: false,
+            ),
           ),
           body: MainPage()),
     );
@@ -59,13 +62,7 @@ class _MainPageState extends State<MainPage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => Scaffold(
-                                  appBar: AppBar(),
-                                  body: Container(
-                                    child: Text('Head'),
-                                    alignment: Alignment.center,
-                                  ),
-                                )));
+                            builder: (context) => problemPage1()));
                   },
                 ),
               ),
@@ -226,14 +223,19 @@ class EmergencyPage extends StatelessWidget {
         'Counting the respiratory movements (normality in the adult: 12 to 20 per minute).',
         'Count the carotid pulse (normality in adults 50 to 80 beats per minute)',
         'Look for wounds, burns or deformities ...',
-        'Covert the victim',
+        'Cover the victim',
         'Never give a drink to an injured person.'
       ])
     ];
 
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.white,
-      title: MyAppBar(goBack: true,),),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.white,
+        title: MyAppBar(
+          goBack: true,
+        ),
+      ),
       body: ListView.builder(
           itemCount: 6,
           itemBuilder: (context, index) {
@@ -279,8 +281,14 @@ class StepsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.white,
-      title: MyAppBar(goBack: true,),),
+      drawer: null,
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.white,
+        title: MyAppBar(
+          goBack: true,
+        ),
+      ),
       body: PageView(
           children: List.generate(
               emergency.steps.length,
@@ -310,7 +318,7 @@ class StepsPage extends StatelessWidget {
 
 class MyAppBar extends StatelessWidget {
   final bool goBack;
-  const MyAppBar({Key key,@required this.goBack}) : super(key: key);
+  const MyAppBar({Key key, @required this.goBack}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -353,5 +361,3 @@ class MyAppBar extends StatelessWidget {
           );
   }
 }
-
-
